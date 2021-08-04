@@ -23,7 +23,7 @@
 
             th, tr {
                 height: 50px;
-                text-align: right;
+                text-align: center;
             }
 
             #result {
