@@ -23,6 +23,7 @@
 
             th, tr {
                 height: 50px;
+                text-align: right;
             }
 
             #result {
@@ -39,7 +40,7 @@
 
     <body>
         <table>
-            <tr><th colspan="4"><input type="text" readonly maxlength="1000000000000000" value="0.00" id="result"></th></tr>
+            <tr><th colspan="4"><input type="text" readonly maxlength="1000000000000000" value="0.00" size="20" id="result"></th></tr>
             <tr></tr>
             <tr><td>,</td><td>Clear Digit</td><td>Clear Entry</td><td>Clear All</td></tr>
             <tr><td>0</td><td>5</td><td>+</td><td>%</td></tr>
