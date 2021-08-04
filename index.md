@@ -9,7 +9,7 @@
                 margin-right: auto;
             }
 
-           td, th {
+           td {
                 border: 1px solid black;
                 text-align: center;
                 padding: 10px;
