@@ -22,7 +22,7 @@
                 text-shadow:1px 1px 3px black;
             }
 
-            th, tr {
+            th {
                 height: 50px;
                 text-align: center;
             }
@@ -42,7 +42,6 @@
     <body>
             <table>
                 <tr><th colspan="4"><input type="text" readonly maxlength="1000000000000000" value="0.00" size="20" class="result"></th></tr>
-                <tr><td colspan="4"></td></tr>
                 <tr><td>,</td><td>Clear Digit</td><td>Clear Entry</td><td>Clear All</td></tr>
                 <tr><td>0</td><td>5</td><td>+</td><td>%</td></tr>
                 <tr><td>1</td><td>6</td><td>-</td><td>X<sup>2</sup></td></tr>
