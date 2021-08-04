@@ -7,7 +7,6 @@
             table{
                 margin-left: auto;
                 margin-right: auto;
-                overflow-x: auto;
             }
 
            td {
@@ -24,32 +23,38 @@
 
             th, tr {
                 height: 50px;
-                text-align: center;
+                text-align: right;
             }
 
-            #result {
+            .result {
                 background-color: darkslateblue;
                 color: white;
                 font-size: 40px;
-                text-align: right;
+                text-align: center;
                 text-shadow:1px 1px 3px black;
                 padding-right: 20px;
+            }
+
+            .divtable{
+                overflow-x: auto;
             }
 
         </style>
     </head>
 
     <body>
-        <table>
-            <tr><th colspan="4"><input type="text" readonly maxlength="1000000000000000" value="0.00" size="20" id="result"></th></tr>
-            <tr></tr>
-            <tr><td>,</td><td>Clear Digit</td><td>Clear Entry</td><td>Clear All</td></tr>
-            <tr><td>0</td><td>5</td><td>+</td><td>%</td></tr>
-            <tr><td>1</td><td>6</td><td>-</td><td>X<sup>2</sup></td></tr>
-            <tr><td>2</td><td>7</td><td>&#215;</td><td>&#8730;X</td></tr>
-            <tr><td>3</td><td>8</td><td>&#247;</td><td>1/X</td></tr>
-            <tr><td>4</td><td>9</td><td colspan="2">=</td></tr>
-        </table>
+        <div class="divtable">
+            <table>
+                <tr><th colspan="4"><input type="text" readonly maxlength="1000000000000000" value="0.00" size="20" class="result"></th></tr>
+                <tr></tr>
+                <tr><td>,</td><td>Clear Digit</td><td>Clear Entry</td><td>Clear All</td></tr>
+                <tr><td>0</td><td>5</td><td>+</td><td>%</td></tr>
+                <tr><td>1</td><td>6</td><td>-</td><td>X<sup>2</sup></td></tr>
+                <tr><td>2</td><td>7</td><td>&#215;</td><td>&#8730;X</td></tr>
+                <tr><td>3</td><td>8</td><td>&#247;</td><td>1/X</td></tr>
+                <tr><td>4</td><td>9</td><td colspan="2">=</td></tr>
+            </table>
+        </div> 
     </body>
 
 </html>
