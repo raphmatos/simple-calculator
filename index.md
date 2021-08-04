@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <html lang="en-GB">
 
     <head>        
@@ -37,5 +35,3 @@
             <tr><td>4</td><td>9</td><td colspan="2">=</td></tr>
         </table>
     </body>
-
-</html>
