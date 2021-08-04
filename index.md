@@ -35,15 +35,10 @@
                 padding-right: 20px;
             }
 
-            .divtable{
-                overflow-x: auto;
-            }
-
         </style>
     </head>
 
     <body>
-        <div class="divtable">
             <table>
                 <tr><th colspan="4"><input type="text" readonly maxlength="1000000000000000" value="0.00" size="20" class="result"></th></tr>
                 <tr></tr>
@@ -54,7 +49,6 @@
                 <tr><td>3</td><td>8</td><td>&#247;</td><td>1/X</td></tr>
                 <tr><td>4</td><td>9</td><td colspan="2">=</td></tr>
             </table>
-        </div> 
     </body>
 
 </html>
