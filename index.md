@@ -44,7 +44,7 @@
     <body>
             <table>
                 <tr><td colspan="4" class="main"><input type="text" readonly disabled maxlength="16" value="0.00" class="result"></td></tr>
-                <tr><td>,</td><td>Clear Digit</td><td>Clear Entry</td><td>Clear All</td></tr>
+                <tr><td>,</td><td>ClearDigit</td><td>ClearEntry</td><td>ClearAll</td></tr>
                 <tr><td>0</td><td>5</td><td>+</td><td>%</td></tr>
                 <tr><td>1</td><td>6</td><td>-</td><td>X<sup>2</sup></td></tr>
                 <tr><td>2</td><td>7</td><td>&#215;</td><td>&#8730;X</td></tr>
