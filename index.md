@@ -8,7 +8,7 @@
             table{
                 margin-left: auto;
                 margin-right: auto;
-                width: 500px;
+                max-width: 500px;
                 table-layout: fixed;
             }
 
