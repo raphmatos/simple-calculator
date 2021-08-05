@@ -24,8 +24,7 @@
                 text-shadow:1px 1px 3px black;
             }
 
-            .main {
-                height: 50px;
+            .main, tr {
                 text-align: center;
             }
 
