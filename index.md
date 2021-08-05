@@ -8,6 +8,8 @@
             table{
                 margin-left: auto;
                 margin-right: auto;
+                width: 500px;
+                table-layout: fixed;
             }
 
            td {
@@ -34,6 +36,7 @@
                 text-align: center;
                 text-shadow:1px 1px 3px black;
                 padding-right: 20px;
+                width: 100%;
             }
 
         </style>
@@ -41,7 +44,7 @@
 
     <body>
             <table>
-                <tr><td colspan="4" class="main"><input type="text" readonly disabled maxlength="1000000000000000" value="0.00" class="result"></td></tr>
+                <tr><td colspan="4" class="main"><input type="text" readonly disabled maxlength="1000000000000000" value="0.00" size="20" class="result"></td></tr>
                 <tr><td>,</td><td>Clear Digit</td><td>Clear Entry</td><td>Clear All</td></tr>
                 <tr><td>0</td><td>5</td><td>+</td><td>%</td></tr>
                 <tr><td>1</td><td>6</td><td>-</td><td>X<sup>2</sup></td></tr>
