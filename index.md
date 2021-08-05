@@ -23,9 +23,7 @@
                 background-color: darkslateblue;
                 font-size: large;
                 font-family: Arial, Helvetica, sans-serif;
-                text-shadow:1px 1px 3px black;
-
-                
+                text-shadow:1px 1px 3px black;    
             }
 
             th{
@@ -59,7 +57,7 @@
     <body>
             <table>
                 <tr><th colspan="4">Simple Calculator</th></tr>
-                <tr class="resultline"><td colspan="4"><input type="text" readonly disabled maxlength="16" value="0.00" class="result"></td></tr>
+                <tr class="resultline"><td colspan="4"><input type="text" readonly disabled maxlength="16" value="0" class="result"></td></tr>
                 <tr><td>,</td><td>ClearDigit</td><td>ClearEntry</td><td>ClearAll</td></tr>
                 <tr><td>0</td><td>5</td><td>+</td><td>%</td></tr>
                 <tr><td>1</td><td>6</td><td>-</td><td>X<sup>2</sup></td></tr>
