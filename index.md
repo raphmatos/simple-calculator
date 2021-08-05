@@ -9,7 +9,6 @@
                 margin-left: auto;
                 margin-right: auto;
                 max-width: 500px;
-                table-layout: fixed;
             }
 
            td {
@@ -24,17 +23,12 @@
                 text-shadow:1px 1px 3px black;
             }
 
-            .main, tr {
-                text-align: center;
-            }
-
             .result {
                 background-color: darkslateblue;
                 color: white;
                 font-size: 40px;
                 text-align: center;
                 text-shadow:1px 1px 3px black;
-                width: 100%;
             }
 
         </style>
@@ -42,7 +36,7 @@
 
     <body>
             <table>
-                <tr><td colspan="4" class="main"><input type="text" readonly disabled maxlength="16" value="0.00" class="result"></td></tr>
+                <tr><td colspan="4"><input type="text" readonly disabled maxlength="16" value="0.00" class="result"></td></tr>
                 <tr><td>,</td><td>ClearDigit</td><td>ClearEntry</td><td>ClearAll</td></tr>
                 <tr><td>0</td><td>5</td><td>+</td><td>%</td></tr>
                 <tr><td>1</td><td>6</td><td>-</td><td>X<sup>2</sup></td></tr>
