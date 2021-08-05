@@ -35,7 +35,6 @@
                 font-size: 40px;
                 text-align: center;
                 text-shadow:1px 1px 3px black;
-                padding-right: 20px;
                 width: 100%;
             }
 
