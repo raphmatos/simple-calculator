@@ -9,6 +9,9 @@
                 margin-left: auto;
                 margin-right: auto;
                 max-width: 500px;
+                user-select: none;
+                -moz-user-select: none;
+                -khtml-user-select: none;
             }
 
            td, th {
@@ -21,6 +24,8 @@
                 font-size: large;
                 font-family: Arial, Helvetica, sans-serif;
                 text-shadow:1px 1px 3px black;
+
+                
             }
 
             th{
@@ -35,13 +40,25 @@
                 text-shadow:1px 1px 3px black;
             }
 
+            td:hover {
+                background-color: rgba(72,61,139, 0.5);
+            }
+
+            .resultline:hover {
+                background-color: darkslateblue;
+            }
+
+            td:active {
+                background-color: rgba(72,61,139, 0.7);
+            }
+
         </style>
     </head>
 
     <body>
             <table>
                 <tr><th colspan="4">Simple Calculator</th></tr>
-                <tr><td colspan="4"><input type="text" readonly disabled maxlength="16" value="0.00" class="result"></td></tr>
+                <tr class="resultline"><td colspan="4"><input type="text" readonly disabled maxlength="16" value="0.00" class="result"></td></tr>
                 <tr><td>,</td><td>ClearDigit</td><td>ClearEntry</td><td>ClearAll</td></tr>
                 <tr><td>0</td><td>5</td><td>+</td><td>%</td></tr>
                 <tr><td>1</td><td>6</td><td>-</td><td>X<sup>2</sup></td></tr>
