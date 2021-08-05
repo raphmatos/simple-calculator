@@ -48,28 +48,9 @@
                 background-color: rgba(72,61,139, 0.7);
             }
 
-            a:link {
+            td:link, td:visited, .resultline:hover, .resultline:active, .resultline:link, .resultline:visited {
                 background-color: darkslateblue;
             }
-
-            a:visited {
-                background-color: darkslateblue;
-            }
-
-            .resultline:hover {
-                background-color: darkslateblue;
-            }
-
-            .resultline:active {
-                background-color: darkslateblue;
-            }
-            .resultline:link {
-                background-color: darkslateblue;
-            }
-
-            .resultline:visited {
-                background-color: darkslateblue;
-            }  
 
 
         </style>
