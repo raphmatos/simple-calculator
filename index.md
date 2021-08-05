@@ -36,6 +36,7 @@
 
     <body>
             <table>
+                <tr><td colspan="4">Simple Calculator</td></tr>
                 <tr><td colspan="4"><input type="text" readonly disabled maxlength="16" value="0.00" class="result"></td></tr>
                 <tr><td>,</td><td>ClearDigit</td><td>ClearEntry</td><td>ClearAll</td></tr>
                 <tr><td>0</td><td>5</td><td>+</td><td>%</td></tr>
