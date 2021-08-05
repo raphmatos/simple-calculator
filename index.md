@@ -44,13 +44,33 @@
                 background-color: rgba(72,61,139, 0.5);
             }
 
+            td:active {
+                background-color: rgba(72,61,139, 0.7);
+            }
+
+            a:link {
+                background-color: darkslateblue;
+            }
+
+            a:visited {
+                background-color: darkslateblue;
+            }
+
             .resultline:hover {
                 background-color: darkslateblue;
             }
 
-            td:active {
-                background-color: rgba(72,61,139, 0.7);
+            .resultline:active {
+                background-color: darkslateblue;
             }
+            .resultline:link {
+                background-color: darkslateblue;
+            }
+
+            .resultline:visited {
+                background-color: darkslateblue;
+            }  
+
 
         </style>
     </head>
