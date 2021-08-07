@@ -60,6 +60,7 @@
 
                 var entry1 = 0;
                 var entry2 = 0;
+                var digit = 0;
 
                 function point (event){
                     alert("point");
@@ -73,11 +74,19 @@
                 function clearall (event){
                     alert("clearall");
                 }
-                function zero (event){
-                    document.getElementById("result").value = 0;
-                }
-                function five (event){
-                    document.getElementById("result").value = 5;
+                function num (event){
+                    if(event.target.innerHTML == "0"){ digit = 0;}
+                    else if(event.target.innerHTML == "1"){ digit = 1;}
+                    else if(event.target.innerHTML == "2"){ digit = 2;}
+                    else if(event.target.innerHTML == "3"){ digit = 3;}
+                    else if(event.target.innerHTML == "4"){ digit = 4;}
+                    else if(event.target.innerHTML == "5"){ digit = 5;}
+                    else if(event.target.innerHTML == "6"){ digit = 6;}
+                    else if(event.target.innerHTML == "7"){ digit = 7;}
+                    else if(event.target.innerHTML == "8"){ digit = 8;}
+                    else if(event.target.innerHTML == "9"){ digit = 9;}
+
+                    document.getElementById("result").value = digit;
                 }
                 function plus (event){
                     alert("plus");
@@ -85,23 +94,11 @@
                 function percentage (event){
                     alert("percentage");
                 }
-                function one (event){
-                    document.getElementById("result").value = 1;
-                }
-                function six (event){
-                    document.getElementById("result").value = 6;
-                }
                 function minus (event){
                     alert("minus");
                 }
                 function squared (event){
                     alert("squared");
-                }
-                function two (event){
-                    document.getElementById("result").value = 2;
-                }
-                function seven (event){
-                    document.getElementById("result").value = 7;
                 }
                 function times (event){
                     alert("times");
@@ -109,28 +106,16 @@
                 function root (event){
                     alert("root");
                 }
-                function three (event){
-                    document.getElementById("result").value = 3;
-                }
-                function eight (event){
-                    document.getElementById("result").value = 8;
-                }
                 function division (event){
                     alert("division");
                 }
                 function inversion (event){
                     alert("inversion");
                 }
-                function four (event){
-                    document.getElementById("result").value = 4;
-                }
-                function nine (event){
-                    document.getElementById("result").value = 9;
-                }
                 function process (event){
                     alert("process");
                 }
-  
+                
             </script>
 
     <!--
@@ -146,11 +131,11 @@
                 <tr><th colspan="4">Simple Calculator</th></tr>
                 <tr class="resultline"><td colspan="4"><input type="text" readonly disabled maxlength="16" value="0" id="result"></td></tr>
                 <tr><td onclick='point(event)'>.</td><td onclick='cleardigit(event)'>ClearDigit</td><td onclick='clearentry(event)'>ClearEntry</td><td onclick='clearall(event)'>ClearAll</td></tr>
-                <tr><td onclick='zero(event)'>0</td><td onclick='five(event)'>5</td><td onclick='plus(event)'>+</td><td onclick='percentage(event)'>%</td></tr>
-                <tr><td onclick='one(event)'>1</td><td onclick='six(event)'>6</td><td onclick='minus(event)'>-</td><td onclick='squared(event)'>X<sup>2</sup></td></tr>
-                <tr><td onclick='two(event)'>2</td><td onclick='seven(event)'>7</td><td onclick='times(event)'>&#215;</td><td onclick='root(event)'>&#8730;X</td></tr>
-                <tr><td onclick='three(event)'>3</td><td onclick='eight(event)'>8</td><td onclick='division(event)'>&#247;</td><td onclick='inversion(event)'>1/X</td></tr>
-                <tr><td onclick='four(event)'>4</td><td onclick='nine(event)'>9</td><td onclick='process(event)' colspan="2">=</td></tr>
+                <tr><td onclick='num(event)'>0</td><td onclick='num(event)'>5</td><td onclick='plus(event)'>+</td><td onclick='percentage(event)'>%</td></tr>
+                <tr><td onclick='num(event)'>1</td><td onclick='num(event)'>6</td><td onclick='minus(event)'>-</td><td onclick='squared(event)'>X<sup>2</sup></td></tr>
+                <tr><td onclick='num(event)'>2</td><td onclick='num(event)'>7</td><td onclick='times(event)'>&#215;</td><td onclick='root(event)'>&#8730;X</td></tr>
+                <tr><td onclick='num(event)'>3</td><td onclick='num(event)'>8</td><td onclick='division(event)'>&#247;</td><td onclick='inversion(event)'>1/X</td></tr>
+                <tr><td onclick='num(event)'>4</td><td onclick='num(event)'>9</td><td onclick='process(event)' colspan="2">=</td></tr>
             </table>
 
     </body>
