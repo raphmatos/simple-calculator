@@ -58,8 +58,11 @@
 
             <script>
 
-                function comma (event){
-                    alert("comma");
+                var entry1 = 0;
+                var entry2 = 0;
+
+                function point (event){
+                    alert("point");
                 }
                 function cleardigit (event){
                     alert("cleardigit");
@@ -71,10 +74,10 @@
                     alert("clearall");
                 }
                 function zero (event){
-                    alert("zero");
+                    document.getElementById("result").value = 0;
                 }
                 function five (event){
-                    alert("five");
+                    document.getElementById("result").value = 5;
                 }
                 function plus (event){
                     alert("plus");
@@ -83,10 +86,10 @@
                     alert("percentage");
                 }
                 function one (event){
-                    alert("one");
+                    document.getElementById("result").value = 1;
                 }
                 function six (event){
-                    alert("six");
+                    document.getElementById("result").value = 6;
                 }
                 function minus (event){
                     alert("minus");
@@ -95,10 +98,10 @@
                     alert("squared");
                 }
                 function two (event){
-                    alert("two");
+                    document.getElementById("result").value = 2;
                 }
                 function seven (event){
-                    alert("seven");
+                    document.getElementById("result").value = 7;
                 }
                 function times (event){
                     alert("times");
@@ -107,10 +110,10 @@
                     alert("root");
                 }
                 function three (event){
-                    alert("three");
+                    document.getElementById("result").value = 3;
                 }
                 function eight (event){
-                    alert("eight");
+                    document.getElementById("result").value = 8;
                 }
                 function division (event){
                     alert("division");
@@ -119,10 +122,10 @@
                     alert("inversion");
                 }
                 function four (event){
-                    alert("four");
+                    document.getElementById("result").value = 4;
                 }
                 function nine (event){
-                    alert("nine");
+                    document.getElementById("result").value = 9;
                 }
                 function process (event){
                     alert("process");
@@ -132,7 +135,7 @@
 
     <!--
         Buttons:
-        comma / cleardigit / clearentry / clearall
+        point / cleardigit / clearentry / clearall
         zero / five / plus / percentage
         one / six / minus / squared
         two / seven / times / root
@@ -142,7 +145,7 @@
             <table>
                 <tr><th colspan="4">Simple Calculator</th></tr>
                 <tr class="resultline"><td colspan="4"><input type="text" readonly disabled maxlength="16" value="0" id="result"></td></tr>
-                <tr><td onclick='comma(event)'>,</td><td onclick='cleardigit(event)'>ClearDigit</td><td onclick='clearentry(event)'>ClearEntry</td><td onclick='clearall(event)'>ClearAll</td></tr>
+                <tr><td onclick='point(event)'>.</td><td onclick='cleardigit(event)'>ClearDigit</td><td onclick='clearentry(event)'>ClearEntry</td><td onclick='clearall(event)'>ClearAll</td></tr>
                 <tr><td onclick='zero(event)'>0</td><td onclick='five(event)'>5</td><td onclick='plus(event)'>+</td><td onclick='percentage(event)'>%</td></tr>
                 <tr><td onclick='one(event)'>1</td><td onclick='six(event)'>6</td><td onclick='minus(event)'>-</td><td onclick='squared(event)'>X<sup>2</sup></td></tr>
                 <tr><td onclick='two(event)'>2</td><td onclick='seven(event)'>7</td><td onclick='times(event)'>&#215;</td><td onclick='root(event)'>&#8730;X</td></tr>
