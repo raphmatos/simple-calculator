@@ -30,7 +30,7 @@
                 font-size: 40px;
             }
 
-            .result {
+            #result {
                 background-color: darkslateblue;
                 color: white;
                 font-size: 40px;
@@ -50,21 +50,106 @@
                 background-color: darkslateblue;
             }
 
-
         </style>
+
     </head>
 
     <body>
+
+            <script>
+
+                function comma (event){
+                    alert("comma");
+                }
+                function cleardigit (event){
+                    alert("cleardigit");
+                }
+                function clearentry (event){
+                    alert("clearentry");
+                }
+                function clearall (event){
+                    alert("clearall");
+                }
+                function zero (event){
+                    alert("zero");
+                }
+                function five (event){
+                    alert("five");
+                }
+                function plus (event){
+                    alert("plus");
+                }
+                function percentage (event){
+                    alert("percentage");
+                }
+                function one (event){
+                    alert("one");
+                }
+                function six (event){
+                    alert("six");
+                }
+                function minus (event){
+                    alert("minus");
+                }
+                function squared (event){
+                    alert("squared");
+                }
+                function two (event){
+                    alert("two");
+                }
+                function seven (event){
+                    alert("seven");
+                }
+                function times (event){
+                    alert("times");
+                }
+                function root (event){
+                    alert("root");
+                }
+                function three (event){
+                    alert("three");
+                }
+                function eight (event){
+                    alert("eight");
+                }
+                function division (event){
+                    alert("division");
+                }
+                function inversion (event){
+                    alert("inversion");
+                }
+                function four (event){
+                    alert("four");
+                }
+                function nine (event){
+                    alert("nine");
+                }
+                function process (event){
+                    alert("process");
+                }
+  
+            </script>
+
+    <!--
+        Buttons:
+        comma / cleardigit / clearentry / clearall
+        zero / five / plus / percentage
+        one / six / minus / squared
+        two / seven / times / root
+        three / eight / division / inversion
+        four / nine / process
+    -->
             <table>
                 <tr><th colspan="4">Simple Calculator</th></tr>
-                <tr class="resultline"><td colspan="4"><input type="text" readonly disabled maxlength="16" value="0" class="result"></td></tr>
-                <tr><td>,</td><td>ClearDigit</td><td>ClearEntry</td><td>ClearAll</td></tr>
-                <tr><td>0</td><td>5</td><td>+</td><td>%</td></tr>
-                <tr><td>1</td><td>6</td><td>-</td><td>X<sup>2</sup></td></tr>
-                <tr><td>2</td><td>7</td><td>&#215;</td><td>&#8730;X</td></tr>
-                <tr><td>3</td><td>8</td><td>&#247;</td><td>1/X</td></tr>
-                <tr><td>4</td><td>9</td><td colspan="2">=</td></tr>
+                <tr class="resultline"><td colspan="4"><input type="text" readonly disabled maxlength="16" value="0" id="result"></td></tr>
+                <tr><td onclick='comma(event)'>,</td><td onclick='cleardigit(event)'>ClearDigit</td><td onclick='clearentry(event)'>ClearEntry</td><td onclick='clearall(event)'>ClearAll</td></tr>
+                <tr><td onclick='zero(event)'>0</td><td onclick='five(event)'>5</td><td onclick='plus(event)'>+</td><td onclick='percentage(event)'>%</td></tr>
+                <tr><td onclick='one(event)'>1</td><td onclick='six(event)'>6</td><td onclick='minus(event)'>-</td><td onclick='squared(event)'>X<sup>2</sup></td></tr>
+                <tr><td onclick='two(event)'>2</td><td onclick='seven(event)'>7</td><td onclick='times(event)'>&#215;</td><td onclick='root(event)'>&#8730;X</td></tr>
+                <tr><td onclick='three(event)'>3</td><td onclick='eight(event)'>8</td><td onclick='division(event)'>&#247;</td><td onclick='inversion(event)'>1/X</td></tr>
+                <tr><td onclick='four(event)'>4</td><td onclick='nine(event)'>9</td><td onclick='process(event)' colspan="2">=</td></tr>
             </table>
+
     </body>
 
 </html>
