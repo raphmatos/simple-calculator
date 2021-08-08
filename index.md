@@ -105,7 +105,7 @@
                         if(event.target.innerHTML == "."){
                             if(haspoint == false) { haspoint = true; document.getElementById("result").value = entry1.toString() + "."}
                         } else {
-                            if(entry.toString().length < 20) {
+                            if(entry.toString().length < 15) {
                                 if(event.target.innerHTML == "0"){ digit = 0;}
                                 else if(event.target.innerHTML == "1"){ digit = 1;}
                                 else if(event.target.innerHTML == "2"){ digit = 2;}
