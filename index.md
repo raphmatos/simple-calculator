@@ -58,16 +58,9 @@
 
             <script>
 
-                let memory = new Number(0);
-
-                let entry1 = new Number(0);
-                let entry2 = new Number(0);
-
-                let entry = new Number(0);
+                let memory = new Number(0), entry1 = new Number(0), entry2 = new Number(0), entry = new Number(0), digit = new Number(0);
 
                 let hasPoint = new Boolean(false);
-
-                let digit = new Number(0);
 
                 function num (event){
 
