@@ -58,16 +58,18 @@
 
             <script>
 
-                let memory = new Number(0), entry1 = new Number(0), entry2 = new Number(0), entry = new Number(0), digit = new Number(0);
+                let memory = new Number(0), entry1 = new Number(0), entry2 = new Number(0), entry2Zeros = new Number(0), entry = new Number(0), digit = new Number(0);
 
                 let hasPoint = new Boolean(false);
+
+                const maxDigits = 15;
 
                 function num (event){
 
                         if(event.target.innerHTML == "."){
                             if(hasPoint == false) { hasPoint = true; document.getElementById("result").value = entry1.toString() + "."}
                         } else {
-                            if(entry.toString().length < 15) {
+                            if(entry.toString().length < maxDigits && entry2Zeros + 2 < maxDigits) {
                                 if(event.target.innerHTML == "0"){ digit = 0;}
                                 else if(event.target.innerHTML == "1"){ digit = 1;}
                                 else if(event.target.innerHTML == "2"){ digit = 2;}
@@ -80,9 +82,10 @@
                                 else if(event.target.innerHTML == "9"){ digit = 9;}
 
                                 if(hasPoint == true){
-                                    entry2 = (entry2 * 10) + digit;
-                                    entry = entry1 + (entry2/(10 ** entry2.toString().length));
-                                    document.getElementById("result").value = entry1.toString() + "." + entry2.toString();
+                                    if(entry2 == 0 && digit == 0){ entry2Zeros++; } else { entry2 = (entry2 * 10) + digit; }
+                                    entry = entry1 + (entry2 / (10 ** (entry2.toString().length + entry2Zeros)));
+                                    document.getElementById("result").value = entry1.toString() + "." + "0".repeat(entry2Zeros);
+                                    if(entry2 != 0) { document.getElementById("result").value = document.getElementById("result").value + entry2.toString(); }
                                 } else {
                                     entry1 = (entry1 * 10) + digit;
                                     entry = entry1;
@@ -93,19 +96,20 @@
                 }
 
                 function calc (event){
-                    if(event.target.innerHTML == "ClearEntry"){ entry1 = entry2 = entry = 0; hasPoint = false; document.getElementById("result").value = "0"}
-                    if(event.target.innerHTML == "ClearAll"){ entry1 = entry2 = entry = memory = 0; hasPoint = false; document.getElementById("result").value = "0"}
+                    if(event.target.innerHTML == "ClearEntry"){ entry1 = entry2 = entry = entry2Zeros = 0; hasPoint = false; document.getElementById("result").value = "0"}
+                    if(event.target.innerHTML == "ClearAll"){ entry1 = entry2 = entry = entry2Zeros = memory = 0; hasPoint = false; document.getElementById("result").value = "0"}
                     if(event.target.innerHTML == "ClearDigit"){
-                        entry = Number(entry.toString().slice(0, -1)); document.getElementById("result").value = entry.toString();
+                        
+                        entry = Number(entry.toString().slice(0, -1));
                         if(Number.isInteger(entry)){
                             hasPoint = false;
-                            entry2 = 0;
+                            entry2 = entry2Zeros = 0;
                             entry1 = entry;
+                            document.getElementById("result").value = entry.toString();
                         }else{
-
-                            entry2 = 
-                            alert(entry2);
-                            entry1 = parseInt(entry/1);
+                            // Check here
+                            entry2 = Number(entry2.toString().slice(0, -1));
+                            document.getElementById("result").value = entry1.toString() + "." + entry2.toString();
                         }
                     }
                 }
