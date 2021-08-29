@@ -69,7 +69,7 @@
                         if(event.target.innerHTML == "."){
                             if(hasPoint == false) { hasPoint = true; document.getElementById("result").value = entry1.toString() + "."}
                         } else {
-                            if(entry.toString().length < maxDigits && entry2Zeros + 2 < maxDigits) {
+                              if(document.getElementById("result").value.length < maxDigits) {
                                 if(event.target.innerHTML == "0"){ digit = 0;}
                                 else if(event.target.innerHTML == "1"){ digit = 1;}
                                 else if(event.target.innerHTML == "2"){ digit = 2;}
@@ -99,17 +99,16 @@
                     if(event.target.innerHTML == "ClearEntry"){ entry1 = entry2 = entry = entry2Zeros = 0; hasPoint = false; document.getElementById("result").value = "0"}
                     if(event.target.innerHTML == "ClearAll"){ entry1 = entry2 = entry = entry2Zeros = memory = 0; hasPoint = false; document.getElementById("result").value = "0"}
                     if(event.target.innerHTML == "ClearDigit"){
-                        
                         entry = Number(entry.toString().slice(0, -1));
-                        if(Number.isInteger(entry)){
+                        if(Number.isInteger(entry) && entry2Zeros == 0){
                             hasPoint = false;
                             entry2 = entry2Zeros = 0;
                             entry1 = entry;
                             document.getElementById("result").value = entry.toString();
                         }else{
-                            // Check here
-                            entry2 = Number(entry2.toString().slice(0, -1));
-                            document.getElementById("result").value = entry1.toString() + "." + entry2.toString();
+                            if(entry2 == 0) { entry2Zeros--; } else { entry2 = Number(entry2.toString().slice(0, -1)); }
+                            document.getElementById("result").value = entry1.toString() + "." + "0".repeat(entry2Zeros);
+                            if(entry2 > 0) { document.getElementById("result").value = document.getElementById("result").value + entry2.toString(); }
                         }
                     }
                 }
