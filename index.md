@@ -46,8 +46,18 @@
                 background-color: darkslateblue;
                 color: white;
                 font-size: 40px;
-                text-align: center;
+                text-align: right;
                 text-shadow:1px 1px 3px black;
+                border: none;
+            }
+
+            #memoryField {
+                background-color: darkslateblue;
+                color: white;
+                font-size: 20px;
+                text-align: right;
+                text-shadow:1px 1px 3px black;
+                border: none;
             }
 
         </style>
@@ -63,6 +73,8 @@
                 let hasPoint = new Boolean(false);
 
                 const maxDigits = 15;
+
+                let operator = "none";
 
                 function num (event){
 
@@ -96,8 +108,8 @@
                 }
 
                 function calc (event){
-                    if(event.target.innerHTML == "ClearEntry"){ entry1 = entry2 = entry = entry2Zeros = 0; hasPoint = false; document.getElementById("result").value = "0"}
-                    if(event.target.innerHTML == "ClearAll"){ entry1 = entry2 = entry = entry2Zeros = memory = 0; hasPoint = false; document.getElementById("result").value = "0"}
+                    if(event.target.innerHTML == "ClearEntry"){ entry1 = entry2 = entry = entry2Zeros = 0; hasPoint = false; document.getElementById("result").value = "0"; document.getElementById("memoryField").value = "";}
+                    if(event.target.innerHTML == "ClearAll"){ entry1 = entry2 = entry = entry2Zeros = memory = 0; operator = "none"; hasPoint = false; document.getElementById("result").value = "0";}
                     if(event.target.innerHTML == "ClearDigit"){
                         entry = Number(entry.toString().slice(0, -1));
                         if(Number.isInteger(entry) && entry2Zeros == 0){
@@ -111,19 +123,113 @@
                             if(entry2 > 0) { document.getElementById("result").value = document.getElementById("result").value + entry2.toString(); }
                         }
                     }
+                    if(event.target.innerHTML == "√X"){
+                        entry = Math.sqrt(entry);
+                        entry1 = Math.trunc(entry);
+                        if(Number.isInteger(entry)) {
+                            hasPoint = false;
+                            entry2 = entry2Zeros = 0;
+                        } else {
+                            hasPoint = true;
+                            entry2 = Number(entry.toString().substring(entry.toString().indexOf(".") + 1));
+                            entry2Zeros = entry.toString().length - 1 - entry1.toString().length - entry2.toString().length;
+                        }
+                        if(entry == 0) { document.getElementById("result").value = "0"; } else { 
+                            if(entry.toString().length > maxDigits){ document.getElementById("result").value = entry.toString().substring(0, maxDigits); 
+                            } else { document.getElementById("result").value = entry.toString(); }
+                        }
+                    }
+
+                     if(event.target.innerHTML == "X<sup>2</sup>"){
+ 
+                        entry = entry**2;
+                        entry1 = Math.trunc(entry);
+                        if(Number.isInteger(entry)) {
+                            hasPoint = false;
+                            entry2 = entry2Zeros = 0;
+                        } else {
+                            hasPoint = true;
+                            entry2 = Number(entry.toString().substring(entry.toString().indexOf(".") + 1));
+                            entry2Zeros = entry.toString().length - 1 - entry1.toString().length - entry2.toString().length;
+                        }
+                        if(entry == 0) { document.getElementById("result").value = "0"; } else {
+                            if(entry.toString().length > maxDigits){ document.getElementById("result").value = entry.toString().substring(0, maxDigits); 
+                            } else { document.getElementById("result").value = entry.toString(); }
+                            }
+
+                     }
+
+                     if(event.target.innerHTML == "1/X"){
+                        if(entry != 0){
+                        entry = 1/entry;
+                        entry1 = Math.trunc(entry);
+                        if(Number.isInteger(entry)) {
+                            hasPoint = false;
+                            entry2 = entry2Zeros = 0;
+                        } else {
+                            hasPoint = true;
+                            entry2 = Number(entry.toString().substring(entry.toString().indexOf(".") + 1));
+                            entry2Zeros = entry.toString().length - 1 - entry1.toString().length - entry2.toString().length;
+                        }
+                        if(entry == 0) { document.getElementById("result").value = "0"; } else {
+                            if(entry.toString().length > maxDigits){ document.getElementById("result").value = entry.toString().substring(0, maxDigits); 
+                            } else { document.getElementById("result").value = entry.toString(); }
+                            }
+
+                    } else {
+                            document.getElementById("result").value = "Unable to divide by zero";
+                        }    
+                }
+
+                if(event.target.innerHTML == "+"){
+                    operator = "+";
+                    memory = entry;
+                    entry1 = entry2 = entry = entry2Zeros = 0; hasPoint = false;
+                    document.getElementById("memoryField").value = memory.toString() + " + ";
+                }
+
+                if(event.target.innerHTML == "-"){
+                    operator = "-";
+                    memory = entry;
+                    entry1 = entry2 = entry = entry2Zeros = 0; hasPoint = false;
+                    document.getElementById("memoryField").value = memory.toString() + " - ";
+                }
+
+                if(event.target.innerHTML == "×"){
+                    operator = "×";
+                    memory = entry;
+                    entry1 = entry2 = entry = entry2Zeros = 0; hasPoint = false;
+                    document.getElementById("memoryField").value = memory.toString() + " × ";
+                }
+
+                if(event.target.innerHTML == "÷"){
+                    operator = "÷";
+                    memory = entry;
+                    entry1 = entry2 = entry = entry2Zeros = 0; hasPoint = false;
+                    document.getElementById("memoryField").value = memory.toString() + " ÷ ";
+                }
+
+                if(event.target.innerHTML == "="){
+                    if(operator != "none"){
+
+                        
+                    }
+                }
+            
                 }
 
             </script>
 
             <table>
                 <tr><th colspan="4">Simple Calculator</th></tr>
-                <tr class="resultLine"><td colspan="4"><input type="text" readonly disabled maxlength="16" value="0" id="result"></td></tr>
+                <tr class="resultLine"><td colspan="4"><input type="text" readonly disabled value="" id="memoryField"></td></tr>
+                <tr class="resultLine"><td colspan="4"><input type="text" readonly disabled value="0" id="result"></td></tr>
                 <tr><td onclick='num(event)'>.</td><td onclick='calc(event)'>ClearDigit</td><td onclick='calc(event)'>ClearEntry</td><td onclick='calc(event)'>ClearAll</td></tr>
-                <tr><td onclick='num(event)'>0</td><td onclick='num(event)'>5</td><td onclick='plus(event)'>+</td><td onclick='percentage(event)'>%</td></tr>
-                <tr><td onclick='num(event)'>1</td><td onclick='num(event)'>6</td><td onclick='minus(event)'>-</td><td onclick='squared(event)'>X<sup>2</sup></td></tr>
-                <tr><td onclick='num(event)'>2</td><td onclick='num(event)'>7</td><td onclick='times(event)'>&#215;</td><td onclick='root(event)'>&#8730;X</td></tr>
-                <tr><td onclick='num(event)'>3</td><td onclick='num(event)'>8</td><td onclick='division(event)'>&#247;</td><td onclick='inversion(event)'>1/X</td></tr>
-                <tr><td onclick='num(event)'>4</td><td onclick='num(event)'>9</td><td onclick='process(event)' colspan="2">=</td></tr>
+                <tr><td onclick='num(event)'>0</td><td onclick='num(event)'>5</td><td onclick='calc(event)'>+</td><td onclick='percentage(event)'>%</td></tr>
+                <tr><td onclick='num(event)'>1</td><td onclick='num(event)'>6</td><td onclick='calc(event)'>-</td><td onclick='calc(event)'>X<sup>2</sup></td></tr>
+                <tr><td onclick='num(event)'>2</td><td onclick='num(event)'>7</td><td onclick='calc(event)'>&#215;</td><td onclick='calc(event)'>&#8730;X</td></tr>
+                <tr><td onclick='num(event)'>3</td><td onclick='num(event)'>8</td><td onclick='calc(event)'>&#247;</td><td onclick='calc(event)'>1/X</td></tr>
+                <tr><td onclick='num(event)'>4</td><td onclick='num(event)'>9</td><td onclick='calc(event)' colspan="2">=</td></tr>
             </table>
 
     </body>
