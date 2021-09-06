@@ -78,10 +78,11 @@
 
                 function num (event){
 
+
                         if(event.target.innerHTML == "."){
                             if(hasPoint == false) { hasPoint = true; document.getElementById("result").value = entry1.toString() + "."}
                         } else {
-                              if(document.getElementById("result").value.length < maxDigits) {
+                              if(document.getElementById("result").value.length < maxDigits || document.getElementById("result").value == "Unable to divide by zero!") {
                                 if(event.target.innerHTML == "0"){ digit = 0;}
                                 else if(event.target.innerHTML == "1"){ digit = 1;}
                                 else if(event.target.innerHTML == "2"){ digit = 2;}
@@ -108,8 +109,8 @@
                 }
 
                 function calc (event){
-                    if(event.target.innerHTML == "ClearEntry"){ entry1 = entry2 = entry = entry2Zeros = 0; hasPoint = false; document.getElementById("result").value = "0"; document.getElementById("memoryField").value = "";}
-                    if(event.target.innerHTML == "ClearAll"){ entry1 = entry2 = entry = entry2Zeros = memory = 0; operator = "none"; hasPoint = false; document.getElementById("result").value = "0";}
+                    if(event.target.innerHTML == "ClearEntry"){ entry1 = entry2 = entry = entry2Zeros = 0; hasPoint = false; document.getElementById("result").value = "0";}
+                    if(event.target.innerHTML == "ClearAll"){ entry1 = entry2 = entry = entry2Zeros = memory = 0; operator = "none"; hasPoint = false; document.getElementById("result").value = "0"; document.getElementById("memoryField").value = "";}
                     if(event.target.innerHTML == "ClearDigit"){
                         entry = Number(entry.toString().slice(0, -1));
                         if(Number.isInteger(entry) && entry2Zeros == 0){
@@ -177,8 +178,36 @@
                             }
 
                     } else {
-                            document.getElementById("result").value = "Unable to divide by zero";
+                            document.getElementById("result").value = "Unable to divide by zero!";
                         }    
+                }
+
+                if(event.target.innerHTML == "%"){
+                    if(operator = "none"){
+                        entry = entry/100;
+                    } else if(operator == "+"){
+                        entry = memory + memory*(entry)/100;
+                    } else if(operator == "-") {
+                        entry = memory - memory*(entry)/100;
+                    } else if(operator == "×"){
+                        entry = memory * memory*(entry)/100;
+                    } else if(operator == "÷"){
+                        entry = memory / memory*(entry)/100;
+                    }
+
+                    entry1 = Math.trunc(entry);
+                        if(Number.isInteger(entry)) {
+                            hasPoint = false;
+                            entry2 = entry2Zeros = 0;
+                        } else {
+                            hasPoint = true;
+                            entry2 = Number(entry.toString().substring(entry.toString().indexOf(".") + 1));
+                            entry2Zeros = entry.toString().length - 1 - entry1.toString().length - entry2.toString().length;
+                        }
+                        if(entry == 0) { document.getElementById("result").value = "0"; } else {
+                            if(entry.toString().length > maxDigits){ document.getElementById("result").value = entry.toString().substring(0, maxDigits); 
+                            } else { document.getElementById("result").value = entry.toString(); }
+                        }
                 }
 
                 if(event.target.innerHTML == "+"){
@@ -210,22 +239,52 @@
                 }
 
                 if(event.target.innerHTML == "="){
-                    if(operator != "none"){
+                    if(entry == 0 && operator == "÷"){
+                        memory = entry = entry1 = entry2 = entry2Zeros = 0;
+                        hasPoint = false;
+                        operator = "none";
+                        document.getElementById("result").value = "Unable to divide by zero!";
+                        document.getElementById("memoryField").value = "";
+                    } else {
 
-                        
+                    if(operator == "+"){
+                        entry = memory + entry;
+                    } else if(operator == "-") {
+                        entry = memory - entry;
+                    } else if(operator == "×"){
+                        entry = memory * entry;
+                    } else if(operator == "÷"){
+                            entry = memory / entry;
+                    }
+                        memory = 0;
+                        operator = "none";
+                        entry1 = Math.trunc(entry);
+                        if(Number.isInteger(entry)) {
+                            hasPoint = false;
+                            entry2 = entry2Zeros = 0;
+                        } else {
+                            hasPoint = true;
+                            entry2 = Number(entry.toString().substring(entry.toString().indexOf(".") + 1));
+                            entry2Zeros = entry.toString().length - 1 - entry1.toString().length - entry2.toString().length;
+                        }
+                        if(entry == 0) { document.getElementById("result").value = "0"; } else {
+                            if(entry.toString().length > maxDigits){ document.getElementById("result").value = entry.toString().substring(0, maxDigits); 
+                            } else { document.getElementById("result").value = entry.toString(); }
+                            }
+                            document.getElementById("memoryField").value = "";
                     }
                 }
-            
-                }
+                
+            }
 
             </script>
 
             <table>
-                <tr><th colspan="4">Simple Calculator</th></tr>
+                <tr><th colspan="4">Simple Calculator ±</th></tr>
                 <tr class="resultLine"><td colspan="4"><input type="text" readonly disabled value="" id="memoryField"></td></tr>
                 <tr class="resultLine"><td colspan="4"><input type="text" readonly disabled value="0" id="result"></td></tr>
                 <tr><td onclick='num(event)'>.</td><td onclick='calc(event)'>ClearDigit</td><td onclick='calc(event)'>ClearEntry</td><td onclick='calc(event)'>ClearAll</td></tr>
-                <tr><td onclick='num(event)'>0</td><td onclick='num(event)'>5</td><td onclick='calc(event)'>+</td><td onclick='percentage(event)'>%</td></tr>
+                <tr><td onclick='num(event)'>0</td><td onclick='num(event)'>5</td><td onclick='calc(event)'>+</td><td onclick='calc(event)'>%</td></tr>
                 <tr><td onclick='num(event)'>1</td><td onclick='num(event)'>6</td><td onclick='calc(event)'>-</td><td onclick='calc(event)'>X<sup>2</sup></td></tr>
                 <tr><td onclick='num(event)'>2</td><td onclick='num(event)'>7</td><td onclick='calc(event)'>&#215;</td><td onclick='calc(event)'>&#8730;X</td></tr>
                 <tr><td onclick='num(event)'>3</td><td onclick='num(event)'>8</td><td onclick='calc(event)'>&#247;</td><td onclick='calc(event)'>1/X</td></tr>
