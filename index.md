@@ -183,7 +183,7 @@
                 }
 
                 if(event.target.innerHTML == "%"){
-                    if(operator = "none"){
+                    if(operator == "none"){
                         entry = entry/100;
                     } else if(operator == "+"){
                         entry = memory + memory*(entry)/100;
@@ -192,9 +192,11 @@
                     } else if(operator == "×"){
                         entry = memory * memory*(entry)/100;
                     } else if(operator == "÷"){
-                        entry = memory / memory*(entry)/100;
+                        entry = memory / (memory*(entry)/100);
                     }
 
+                    memory = 0;
+                    operator = "none";
                     entry1 = Math.trunc(entry);
                         if(Number.isInteger(entry)) {
                             hasPoint = false;
@@ -208,6 +210,8 @@
                             if(entry.toString().length > maxDigits){ document.getElementById("result").value = entry.toString().substring(0, maxDigits); 
                             } else { document.getElementById("result").value = entry.toString(); }
                         }
+                        document.getElementById("memoryField").value = "";
+
                 }
 
                 if(event.target.innerHTML == "+"){
