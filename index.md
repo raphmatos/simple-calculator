@@ -76,23 +76,29 @@
 
                 let operator = "none";
 
+                document.addEventListener('keydown', keyCheck);
+
+                function keyCheck(e) {
+                    if(e.key == "0" || e.key == "1" || e.key == "2" || e.key == "3" || e.key == "4" || e.key == "5" || e.key == "6" || e.key == "7" || e.key == "8" || e.key == "9" || e.key == ".") { num(e)}
+                    else if (e.keyCode == "8" || e.keyCode == "46" || e.key == "+" || e.key == "-" || e.key == "/" || e.key == "*" || e.keyCode == "13") { calc(e);}
+                }
+
                 function num (event){
 
-
-                        if(event.target.innerHTML == "."){
+                        if(event.target.innerHTML == "." || event.key == "."){
                             if(hasPoint == false) { hasPoint = true; document.getElementById("result").value = entry1.toString() + "."}
                         } else {
                               if(document.getElementById("result").value.length < maxDigits || document.getElementById("result").value == "Unable to divide by zero!") {
-                                if(event.target.innerHTML == "0"){ digit = 0;}
-                                else if(event.target.innerHTML == "1"){ digit = 1;}
-                                else if(event.target.innerHTML == "2"){ digit = 2;}
-                                else if(event.target.innerHTML == "3"){ digit = 3;}
-                                else if(event.target.innerHTML == "4"){ digit = 4;}
-                                else if(event.target.innerHTML == "5"){ digit = 5;}
-                                else if(event.target.innerHTML == "6"){ digit = 6;}
-                                else if(event.target.innerHTML == "7"){ digit = 7;}
-                                else if(event.target.innerHTML == "8"){ digit = 8;}
-                                else if(event.target.innerHTML == "9"){ digit = 9;}
+                                if(event.target.innerHTML == "0" || event.key == "0"){ digit = 0;}
+                                else if(event.target.innerHTML == "1" || event.key == "1"){ digit = 1;}
+                                else if(event.target.innerHTML == "2" || event.key == "2"){ digit = 2;}
+                                else if(event.target.innerHTML == "3" || event.key == "3"){ digit = 3;}
+                                else if(event.target.innerHTML == "4" || event.key == "4"){ digit = 4;}
+                                else if(event.target.innerHTML == "5" || event.key == "5"){ digit = 5;}
+                                else if(event.target.innerHTML == "6" || event.key == "6"){ digit = 6;}
+                                else if(event.target.innerHTML == "7" || event.key == "7"){ digit = 7;}
+                                else if(event.target.innerHTML == "8" || event.key == "8"){ digit = 8;}
+                                else if(event.target.innerHTML == "9" || event.key == "9"){ digit = 9;}
 
                                 if(hasPoint == true){
                                     if(entry2 == 0 && digit == 0){ entry2Zeros++; } else { entry2 = (entry2 * 10) + digit; }
@@ -109,9 +115,9 @@
                 }
 
                 function calc (event){
-                    if(event.target.innerHTML == "ClearEntry"){ entry1 = entry2 = entry = entry2Zeros = 0; hasPoint = false; document.getElementById("result").value = "0";}
+                    if(event.target.innerHTML == "ClearEntry" || event.keyCode == "46"){ entry1 = entry2 = entry = entry2Zeros = 0; hasPoint = false; document.getElementById("result").value = "0";}
                     if(event.target.innerHTML == "ClearAll"){ entry1 = entry2 = entry = entry2Zeros = memory = 0; operator = "none"; hasPoint = false; document.getElementById("result").value = "0"; document.getElementById("memoryField").value = "";}
-                    if(event.target.innerHTML == "ClearDigit"){
+                    if(event.target.innerHTML == "ClearDigit" || event.keyCode == "8"){
                         entry = Number(entry.toString().slice(0, -1));
                         if(Number.isInteger(entry) && entry2Zeros == 0){
                             hasPoint = false;
@@ -214,35 +220,35 @@
 
                 }
 
-                if(event.target.innerHTML == "+"){
+                if((event.target.innerHTML == "+" || event.key == "+") && operator != "+"){
                     operator = "+";
                     memory = entry;
                     entry1 = entry2 = entry = entry2Zeros = 0; hasPoint = false;
                     document.getElementById("memoryField").value = memory.toString() + " + ";
                 }
 
-                if(event.target.innerHTML == "-"){
+                if((event.target.innerHTML == "-" || event.key == "-") && operator != "-"){
                     operator = "-";
                     memory = entry;
                     entry1 = entry2 = entry = entry2Zeros = 0; hasPoint = false;
                     document.getElementById("memoryField").value = memory.toString() + " - ";
                 }
 
-                if(event.target.innerHTML == "×"){
+                if((event.target.innerHTML == "×"|| event.key == "*") && operator != "×"){
                     operator = "×";
                     memory = entry;
                     entry1 = entry2 = entry = entry2Zeros = 0; hasPoint = false;
                     document.getElementById("memoryField").value = memory.toString() + " × ";
                 }
 
-                if(event.target.innerHTML == "÷"){
+                if((event.target.innerHTML == "÷"|| event.key == "/") && operator != "÷"){
                     operator = "÷";
                     memory = entry;
                     entry1 = entry2 = entry = entry2Zeros = 0; hasPoint = false;
                     document.getElementById("memoryField").value = memory.toString() + " ÷ ";
                 }
 
-                if(event.target.innerHTML == "="){
+                if(event.target.innerHTML == "=" || event.keyCode == "13"){
                     if(entry == 0 && operator == "÷"){
                         memory = entry = entry1 = entry2 = entry2Zeros = 0;
                         hasPoint = false;
