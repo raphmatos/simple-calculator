@@ -80,13 +80,13 @@
 
                 function keyCheck(e) {
                     if(e.key == "0" || e.key == "1" || e.key == "2" || e.key == "3" || e.key == "4" || e.key == "5" || e.key == "6" || e.key == "7" || e.key == "8" || e.key == "9" || e.key == ".") { num(e)}
-                    else if (e.keyCode == "8" || e.keyCode == "46" || e.key == "+" || e.key == "-" || e.key == "/" || e.key == "*" || e.keyCode == "13") { calc(e);}
+                    else if (e.keyCode == "8" || e.keyCode == "46" || e.key == "+" || e.key == "-" || e.key == "/" || e.key == "*" || e.keyCode == "13" || e.key == "%") { calc(e);}
                 }
 
                 function num (event){
 
                         if(event.target.innerHTML == "." || event.key == "."){
-                            if(hasPoint == false) { hasPoint = true; document.getElementById("result").value = entry1.toString() + "."}
+                            if(hasPoint == false) { hasPoint = true; document.getElementById("result").value = new Intl.NumberFormat('en-GB', { style: 'decimal'}).format(entry1) + "."}
                         } else {
                               if(document.getElementById("result").value.length < maxDigits || document.getElementById("result").value == "Unable to divide by zero!") {
                                 if(event.target.innerHTML == "0" || event.key == "0"){ digit = 0;}
@@ -103,12 +103,12 @@
                                 if(hasPoint == true){
                                     if(entry2 == 0 && digit == 0){ entry2Zeros++; } else { entry2 = (entry2 * 10) + digit; }
                                     entry = entry1 + (entry2 / (10 ** (entry2.toString().length + entry2Zeros)));
-                                    document.getElementById("result").value = entry1.toString() + "." + "0".repeat(entry2Zeros);
+                                    document.getElementById("result").value = new Intl.NumberFormat('en-GB', { style: 'decimal'}).format(entry1) + "." + "0".repeat(entry2Zeros);
                                     if(entry2 != 0) { document.getElementById("result").value = document.getElementById("result").value + entry2.toString(); }
                                 } else {
                                     entry1 = (entry1 * 10) + digit;
                                     entry = entry1;
-                                    document.getElementById("result").value = entry.toString();
+                                   document.getElementById("result").value =  new Intl.NumberFormat('en-GB', { style: 'decimal'}).format(entry);
                                 }
                         }
                     }
@@ -123,10 +123,10 @@
                             hasPoint = false;
                             entry2 = entry2Zeros = 0;
                             entry1 = entry;
-                            document.getElementById("result").value = entry.toString();
+                            document.getElementById("result").value = new Intl.NumberFormat('en-GB', { style: 'decimal'}).format(entry);
                         }else{
                             if(entry2 == 0) { entry2Zeros--; } else { entry2 = Number(entry2.toString().slice(0, -1)); }
-                            document.getElementById("result").value = entry1.toString() + "." + "0".repeat(entry2Zeros);
+                            document.getElementById("result").value = new Intl.NumberFormat('en-GB', { style: 'decimal'}).format(entry1) + "." + "0".repeat(entry2Zeros);
                             if(entry2 > 0) { document.getElementById("result").value = document.getElementById("result").value + entry2.toString(); }
                         }
                     }
@@ -142,8 +142,8 @@
                             entry2Zeros = entry.toString().length - 1 - entry1.toString().length - entry2.toString().length;
                         }
                         if(entry == 0) { document.getElementById("result").value = "0"; } else { 
-                            if(entry.toString().length > maxDigits){ document.getElementById("result").value = entry.toString().substring(0, maxDigits); 
-                            } else { document.getElementById("result").value = entry.toString(); }
+                            if(entry.toString().length > maxDigits){ document.getElementById("result").value = new Intl.NumberFormat('en-GB', { style: 'decimal'}).format(entry).toString().substring(0, maxDigits); 
+                            } else { document.getElementById("result").value = new Intl.NumberFormat('en-GB', { style: 'decimal'}).format(entry); }
                         }
                     }
 
@@ -160,8 +160,8 @@
                             entry2Zeros = entry.toString().length - 1 - entry1.toString().length - entry2.toString().length;
                         }
                         if(entry == 0) { document.getElementById("result").value = "0"; } else {
-                            if(entry.toString().length > maxDigits){ document.getElementById("result").value = entry.toString().substring(0, maxDigits); 
-                            } else { document.getElementById("result").value = entry.toString(); }
+                            if(entry.toString().length > maxDigits){ document.getElementById("result").value = new Intl.NumberFormat('en-GB', { style: 'decimal'}).format(entry).toString().substring(0, maxDigits); 
+                            } else { document.getElementById("result").value = new Intl.NumberFormat('en-GB', { style: 'decimal'}).format(entry); }
                             }
 
                      }
@@ -179,8 +179,8 @@
                             entry2Zeros = entry.toString().length - 1 - entry1.toString().length - entry2.toString().length;
                         }
                         if(entry == 0) { document.getElementById("result").value = "0"; } else {
-                            if(entry.toString().length > maxDigits){ document.getElementById("result").value = entry.toString().substring(0, maxDigits); 
-                            } else { document.getElementById("result").value = entry.toString(); }
+                            if(entry.toString().length > maxDigits){ document.getElementById("result").value = new Intl.NumberFormat('en-GB', { style: 'decimal'}).format(entry).toString().substring(0, maxDigits); 
+                            } else { document.getElementById("result").value = new Intl.NumberFormat('en-GB', { style: 'decimal'}).format(entry); }
                             }
 
                     } else {
@@ -188,7 +188,7 @@
                         }    
                 }
 
-                if(event.target.innerHTML == "%"){
+                if(event.target.innerHTML == "%" || event.key == "%"){
                     if(operator == "none"){
                         entry = entry/100;
                     } else if(operator == "+"){
@@ -213,8 +213,8 @@
                             entry2Zeros = entry.toString().length - 1 - entry1.toString().length - entry2.toString().length;
                         }
                         if(entry == 0) { document.getElementById("result").value = "0"; } else {
-                            if(entry.toString().length > maxDigits){ document.getElementById("result").value = entry.toString().substring(0, maxDigits); 
-                            } else { document.getElementById("result").value = entry.toString(); }
+                            if(entry.toString().length > maxDigits){ document.getElementById("result").value = new Intl.NumberFormat('en-GB', { style: 'decimal'}).format(entry).toString().substring(0, maxDigits); 
+                            } else { document.getElementById("result").value = new Intl.NumberFormat('en-GB', { style: 'decimal'}).format(entry).toString(); }
                         }
                         document.getElementById("memoryField").value = "";
 
@@ -224,28 +224,28 @@
                     operator = "+";
                     memory = entry;
                     entry1 = entry2 = entry = entry2Zeros = 0; hasPoint = false;
-                    document.getElementById("memoryField").value = memory.toString() + " + ";
+                    document.getElementById("memoryField").value = new Intl.NumberFormat('en-GB', { style: 'decimal'}).format(memory) + " + ";
                 }
 
                 if((event.target.innerHTML == "-" || event.key == "-") && operator != "-"){
                     operator = "-";
                     memory = entry;
                     entry1 = entry2 = entry = entry2Zeros = 0; hasPoint = false;
-                    document.getElementById("memoryField").value = memory.toString() + " - ";
+                    document.getElementById("memoryField").value = new Intl.NumberFormat('en-GB', { style: 'decimal'}).format(memory) + " - ";
                 }
 
                 if((event.target.innerHTML == "×"|| event.key == "*") && operator != "×"){
                     operator = "×";
                     memory = entry;
                     entry1 = entry2 = entry = entry2Zeros = 0; hasPoint = false;
-                    document.getElementById("memoryField").value = memory.toString() + " × ";
+                    document.getElementById("memoryField").value = new Intl.NumberFormat('en-GB', { style: 'decimal'}).format(memory) + " × ";
                 }
 
                 if((event.target.innerHTML == "÷"|| event.key == "/") && operator != "÷"){
                     operator = "÷";
                     memory = entry;
                     entry1 = entry2 = entry = entry2Zeros = 0; hasPoint = false;
-                    document.getElementById("memoryField").value = memory.toString() + " ÷ ";
+                    document.getElementById("memoryField").value = new Intl.NumberFormat('en-GB', { style: 'decimal'}).format(memory) + " ÷ ";
                 }
 
                 if(event.target.innerHTML == "=" || event.keyCode == "13"){
@@ -278,8 +278,8 @@
                             entry2Zeros = entry.toString().length - 1 - entry1.toString().length - entry2.toString().length;
                         }
                         if(entry == 0) { document.getElementById("result").value = "0"; } else {
-                            if(entry.toString().length > maxDigits){ document.getElementById("result").value = entry.toString().substring(0, maxDigits); 
-                            } else { document.getElementById("result").value = entry.toString(); }
+                            if(entry.toString().length > maxDigits){ document.getElementById("result").value = new Intl.NumberFormat('en-GB', { style: 'decimal'}).format(entry).toString().substring(0, maxDigits); 
+                            } else { document.getElementById("result").value = new Intl.NumberFormat('en-GB', { style: 'decimal'}).format(entry); }
                             }
                             document.getElementById("memoryField").value = "";
                     }
