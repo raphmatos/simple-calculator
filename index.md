@@ -5,6 +5,7 @@
         <title>Simple Calculator</title>
         <style>
 
+           /* Style definition */ 
            table {
                 margin-left: auto;
                 margin-right: auto;
@@ -42,7 +43,7 @@
                 background-color: darkslateblue;
             }
 
-            #result {
+            #result, #memoryfield {
                 background-color: darkslateblue;
                 color: white;
                 font-size: 40px;
@@ -52,12 +53,7 @@
             }
 
             #memoryField {
-                background-color: darkslateblue;
-                color: white;
                 font-size: 20px;
-                text-align: right;
-                text-shadow:1px 1px 3px black;
-                border: none;
             }
 
         </style>
@@ -68,20 +64,26 @@
 
             <script>
 
+                /* Variable declaration */ 
+
                 let memory = new Number(0), entry1 = new Number(0), entry2 = new Number(0), entry2Zeros = new Number(0), entry = new Number(0), digit = new Number(0);
 
-                let hasPoint = new Boolean(false);
+                let hasPoint = new Boolean(false), operator = "none";
 
                 const maxDigits = 15;
 
-                let operator = "none";
+                /* Keyboard listener */ 
 
                 document.addEventListener('keydown', keyCheck);
+
+                /* Key check and treatment */ 
 
                 function keyCheck(e) {
                     if(e.key == "0" || e.key == "1" || e.key == "2" || e.key == "3" || e.key == "4" || e.key == "5" || e.key == "6" || e.key == "7" || e.key == "8" || e.key == "9" || e.key == ".") { num(e)}
                     else if (e.keyCode == "8" || e.keyCode == "46" || e.key == "+" || e.key == "-" || e.key == "/" || e.key == "*" || e.keyCode == "13" || e.key == "%") { calc(e);}
                 }
+
+                /* Function responsible for handling the digits and the dot */ 
 
                 function num (event){
 
@@ -113,6 +115,8 @@
                         }
                     }
                 }
+
+                /* Function responsible for handling the actions */ 
 
                 function calc (event){
                     if(event.target.innerHTML == "ClearEntry" || event.keyCode == "46"){ entry1 = entry2 = entry = entry2Zeros = 0; hasPoint = false; document.getElementById("result").value = "0";}
@@ -288,6 +292,8 @@
             }
 
             </script>
+
+            <!-- Calculator structure -->
 
             <table>
                 <tr><th colspan="4">Simple Calculator ±</th></tr>
